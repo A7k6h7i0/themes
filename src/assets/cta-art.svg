@@ -1,0 +1,59 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgC" x1="120" y1="40" x2="1100" y2="700" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0D1426"/>
+      <stop offset="1" stop-color="#050815"/>
+    </linearGradient>
+    <radialGradient id="burstC" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 310) rotate(90) scale(250 320)">
+      <stop offset="0" stop-color="#7C3AED" stop-opacity="0.95"/>
+      <stop offset="0.5" stop-color="#06B6D4" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#06B6D4" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cardC1" x1="140" y1="170" x2="1060" y2="610" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="1" stop-color="#0B1220"/>
+    </linearGradient>
+    <linearGradient id="accentC" x1="300" y1="180" x2="920" y2="560" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#A855F7"/>
+      <stop offset="0.4" stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#06B6D4"/>
+    </linearGradient>
+    <pattern id="gridC" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0V64" stroke="#94A3B8" stroke-opacity="0.08"/>
+    </pattern>
+    <filter id="blurC" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="60"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="760" rx="34" fill="url(#bgC)"/>
+  <rect width="1200" height="760" rx="34" fill="url(#gridC)"/>
+  <circle cx="340" cy="180" r="160" fill="#7C3AED" fill-opacity="0.18" filter="url(#blurC)"/>
+  <circle cx="860" cy="170" r="180" fill="#06B6D4" fill-opacity="0.2" filter="url(#blurC)"/>
+  <circle cx="600" cy="360" r="260" fill="url(#burstC)" filter="url(#blurC)"/>
+  <rect x="108" y="110" width="984" height="540" rx="46" fill="url(#cardC1)" stroke="#FFFFFF" stroke-opacity="0.08"/>
+  <rect x="148" y="150" width="260" height="24" rx="12" fill="url(#accentC)"/>
+  <rect x="148" y="194" width="430" height="16" rx="8" fill="#FFFFFF" fill-opacity="0.12"/>
+  <rect x="148" y="220" width="360" height="16" rx="8" fill="#FFFFFF" fill-opacity="0.08"/>
+  <rect x="148" y="286" width="900" height="300" rx="36" fill="#09101B" stroke="#FFFFFF" stroke-opacity="0.08"/>
+  <g transform="translate(184 322)">
+    <rect width="220" height="216" rx="30" fill="#FFFFFF" fill-opacity="0.04"/>
+    <rect x="28" y="30" width="90" height="18" rx="9" fill="#FFFFFF" fill-opacity="0.16"/>
+    <rect x="28" y="62" width="150" height="12" rx="6" fill="#FFFFFF" fill-opacity="0.08"/>
+    <rect x="28" y="86" width="134" height="12" rx="6" fill="#FFFFFF" fill-opacity="0.08"/>
+    <rect x="28" y="138" width="164" height="42" rx="18" fill="url(#accentC)"/>
+  </g>
+  <g transform="translate(436 322)">
+    <rect width="220" height="216" rx="30" fill="#FFFFFF" fill-opacity="0.04"/>
+    <rect x="30" y="28" width="160" height="116" rx="24" fill="#0F172A"/>
+    <path d="M54 120C90 68 128 58 176 72" stroke="url(#accentC)" stroke-width="12" stroke-linecap="round"/>
+    <rect x="28" y="154" width="160" height="18" rx="9" fill="#FFFFFF" fill-opacity="0.12"/>
+  </g>
+  <g transform="translate(688 322)">
+    <rect width="220" height="216" rx="30" fill="#FFFFFF" fill-opacity="0.04"/>
+    <rect x="30" y="28" width="72" height="72" rx="22" fill="#7C3AED" fill-opacity="0.85"/>
+    <rect x="110" y="28" width="72" height="72" rx="22" fill="#06B6D4" fill-opacity="0.85"/>
+    <rect x="30" y="110" width="152" height="16" rx="8" fill="#FFFFFF" fill-opacity="0.12"/>
+    <rect x="30" y="136" width="128" height="16" rx="8" fill="#FFFFFF" fill-opacity="0.08"/>
+    <rect x="30" y="170" width="90" height="16" rx="8" fill="#FFFFFF" fill-opacity="0.08"/>
+  </g>
+</svg>
