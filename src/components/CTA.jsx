@@ -1,121 +1,121 @@
-import { motion as Motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { motion as Motion } from 'framer-motion'
 import { ArrowUpRight, Sparkles } from 'lucide-react'
-import ctaArt from '../assets/cta-art.svg'
+import agencyHero from '../assets/agency-hero.svg'
+import { PrimaryButton, SecondaryButton, Reveal } from './shared'
 
 export default function CTA() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
-
   return (
-    <section id="contact" className="relative py-24 sm:py-28 overflow-hidden">
-      <div className="glow-orb w-[600px] h-[600px] bg-violet-700/18 left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2" />
-      <div className="glow-orb w-[320px] h-[320px] bg-cyan-600/14 right-10 top-10" />
-
-      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+    <section id="contact" className="relative overflow-hidden py-24 sm:py-28">
+      <div className="pointer-events-none absolute inset-0">
         <Motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="surface rounded-[2rem] p-8 sm:p-12 md:p-16 text-center relative overflow-hidden"
-        >
-          <div className="absolute inset-0 grid-pattern opacity-30" />
-          <div className="absolute inset-0 shimmer opacity-40" />
+          animate={{ x: [0, 22, 0], y: [0, -18, 0] }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute left-1/2 top-1/2 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange-500/18 blur-[120px]"
+        />
+        <div className="absolute right-0 top-10 h-[20rem] w-[20rem] rounded-full bg-cyan-400/12 blur-[120px]" />
+      </div>
 
-          <div className="relative z-10">
-            <Motion.div
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={inView ? { scale: 1, opacity: 1 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-500 to-cyan-400 flex items-center justify-center mx-auto mb-6 pulse-glow"
-            >
-              <Sparkles size={28} className="text-white" />
-            </Motion.div>
+      <div className="content-shell relative">
+        <Reveal>
+          <Motion.div
+            initial={{ opacity: 0, y: 28, scale: 0.98 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden rounded-[2.5rem] border border-white/10 bg-[linear-gradient(135deg,rgba(15,23,42,0.94),rgba(249,115,22,0.18)_45%,rgba(6,182,212,0.12))] shadow-[0_30px_90px_rgba(2,6,23,0.4)]"
+          >
+            <div className="grid lg:grid-cols-[1fr_1fr]">
+              <div className="p-8 sm:p-12 lg:p-16">
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-orange-100/80">
+                  <Sparkles size={12} />
+                  Final push
+                </div>
 
-            <Motion.span
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.3 }}
-              className="badge mb-4 inline-block"
-            >
-              Ready when you are
-            </Motion.span>
+                <h2 className="mt-6 max-w-2xl text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+                  Make your marketplace feel
+                  <span className="hero-gradient-text"> premium enough to buy now</span>.
+                </h2>
 
-            <h2
-              className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6 leading-tight"
-              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-            >
-              Ready to launch a
-              <br />
-              landing page people{' '}
-              <span className="gradient-text">want immediately?</span>
-            </h2>
+                <p className="mt-6 max-w-xl text-base leading-8 text-slate-300 sm:text-lg">
+                  This closing section now uses a softer split layout, so the ending feels more cinematic and less like a standard CTA block.
+                </p>
 
-            <p className="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
-              This version keeps the page modern, minimal, and premium without the pricing noise.
-              It is built to make the product feel instantly high quality.
-            </p>
+                <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                  <PrimaryButton href="#pricing" className="px-7 py-4 text-base">
+                    Start with Pro
+                    <ArrowUpRight size={18} />
+                  </PrimaryButton>
+                  <SecondaryButton href="#features" className="px-7 py-4 text-base">
+                    Revisit features
+                  </SecondaryButton>
+                </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a
-                href="#showcase"
-                className="btn-primary text-white font-bold px-10 py-4 text-base w-full sm:w-auto"
-              >
-                <span>Browse the collection</span>
-                <ArrowUpRight size={18} />
-              </a>
-              <a
-                href="#highlights"
-                className="btn-secondary font-semibold px-10 py-4 text-base w-full sm:w-auto"
-              >
-                See what is inside
-              </a>
-            </div>
+                <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                  {['Instant download', 'Lifetime access', 'Free updates'].map((item, index) => (
+                    <Motion.div
+                      key={item}
+                      initial={{ opacity: 0, y: 14 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.45, delay: index * 0.06 }}
+                      className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-300"
+                    >
+                      {item}
+                    </Motion.div>
+                  ))}
+                </div>
+              </div>
 
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {[
-                'Product cover',
-                'Editorial detail',
-                'Launch-ready view',
-              ].map((label, index) => (
-                <div
-                  key={label}
-                  className="rounded-3xl border border-white/8 overflow-hidden bg-white/5 card-hover text-left"
+              <div className="relative border-t border-white/10 lg:border-l lg:border-t-0">
+                <Motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+                  className="absolute inset-0 opacity-70"
                 >
-                  <div className="relative h-40">
-                    {index === 0 ? (
-                      <img
-                        src={ctaArt}
-                        alt={label}
-                        className="h-full w-full object-cover object-center"
-                      />
-                    ) : (
-                      <div
-                        className={`h-full w-full ${index === 1
-                          ? 'bg-[radial-gradient(circle_at_top_left,rgba(124,58,237,0.75),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(6,182,212,0.55),transparent_32%),linear-gradient(135deg,rgba(15,23,42,0.95),rgba(15,23,42,0.55))]'
-                          : 'bg-[linear-gradient(135deg,rgba(124,58,237,0.28),rgba(6,182,212,0.22)),radial-gradient(circle_at_center,rgba(255,255,255,0.16),transparent_60%)]'
-                        }`}
-                      />
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+                  <img src={agencyHero} alt="Final CTA preview" className="h-full w-full object-cover" />
+                </Motion.div>
+                <div className="relative z-10 grid h-full gap-4 p-8 sm:p-12 lg:p-16">
+                  <div className="rounded-[1.8rem] border border-white/10 bg-[#0b1220]/80 p-5">
+                    <p className="text-[11px] uppercase tracking-[0.22em] text-orange-100/75">What you get</p>
+                    <div className="mt-4 space-y-3">
+                      {[
+                        'Hero mockup with layered motion',
+                        'Mosaic features and testimonial layout',
+                        'Split pricing and cinematic CTA ending',
+                      ].map((item, index) => (
+                        <Motion.div
+                          key={item}
+                          initial={{ opacity: 0, x: 12 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true, amount: 0.2 }}
+                          transition={{ duration: 0.45, delay: index * 0.05 }}
+                          className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
+                        >
+                          <span className="text-sm text-slate-200">{item}</span>
+                          <span className="h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_14px_rgba(6,182,212,0.85)]" />
+                        </Motion.div>
+                      ))}
+                    </div>
                   </div>
-                  <div className="p-4">
-                    <p className="text-white font-semibold text-sm">{label}</p>
-                    <p className="text-slate-400 text-xs mt-1">A visual anchor that closes the empty space.</p>
+
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    {[
+                      ['Conversion first', 'Clear action and trust cues'],
+                      ['Motion rich', 'Hover states and reveal layers'],
+                      ['Premium feel', 'Glass cards and glowing accents'],
+                      ['Responsive', 'Smooth on every screen size'],
+                    ].map(([title, copy]) => (
+                      <div key={title} className="rounded-[1.4rem] border border-white/10 bg-white/5 p-4">
+                        <p className="text-sm font-semibold text-white">{title}</p>
+                        <p className="mt-2 text-sm leading-6 text-slate-400">{copy}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
-
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-slate-500 text-xs">
-              <span>Premium glass UI</span>
-              <span>Responsive layout</span>
-              <span>Smooth motion</span>
-              <span>Clean Tailwind structure</span>
-            </div>
-          </div>
-        </Motion.div>
+          </Motion.div>
+        </Reveal>
       </div>
     </section>
   )

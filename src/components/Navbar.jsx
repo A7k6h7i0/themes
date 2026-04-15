@@ -1,93 +1,89 @@
 import { useState } from 'react'
-import { motion as Motion, AnimatePresence } from 'framer-motion'
-import { ArrowUpRight, Menu, X, Zap } from 'lucide-react'
-
-const navLinks = [
-  { label: 'Highlights', href: '#highlights' },
-  { label: 'Showcase', href: '#showcase' },
-  { label: 'Why us', href: '#highlights' },
-  { label: 'Contact', href: '#contact' },
-]
+import { AnimatePresence, motion as Motion } from 'framer-motion'
+import { ArrowUpRight, Menu, Sparkles, X } from 'lucide-react'
+import { navLinks } from '../data'
+import { PrimaryButton } from './shared'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="w-full">
-        <Motion.nav
-          initial={{ opacity: 0, y: -20 }}
+    <header className="fixed inset-x-0 top-0 z-50">
+      <div className="content-shell pt-4">
+        <Motion.div
+          initial={{ opacity: 0, y: -18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="surface border-x-0 border-t-0 rounded-none px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between w-full"
+          className="glass-card flex w-full items-center justify-between rounded-3xl px-4 py-3 shadow-[0_20px_60px_rgba(2,6,23,0.3)]"
         >
-          <div className="flex w-full items-center justify-between gap-4">
-            <a href="#" className="flex items-center gap-2.5 group">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 to-cyan-400 flex items-center justify-center pulse-glow">
-                <Zap size={16} className="text-white" />
-              </div>
-              <span className="font-semibold text-lg tracking-tight" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                <span className="gradient-text">Theme</span>Forge
-              </span>
+          <a href="#" className="flex items-center gap-3">
+            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 via-rose-500 to-cyan-400 text-white shadow-[0_0_30px_rgba(249,115,22,0.35)]">
+              <Sparkles size={18} />
+            </span>
+            <span className="text-lg font-semibold tracking-tight text-white">
+              Nova<span className="hero-gradient-text">Market</span>
+            </span>
+          </a>
+
+          <nav className="hidden items-center gap-8 md:flex">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-sm font-medium text-slate-300 transition-colors hover:text-white"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="hidden items-center gap-3 md:flex">
+            <a href="#pricing" className="text-sm font-medium text-slate-300 transition-colors hover:text-white">
+              View pricing
             </a>
-
-            <ul className="hidden md:flex items-center gap-7">
-              {navLinks.map((l) => (
-                <li key={l.label}>
-                  <a
-                    href={l.href}
-                    className="text-slate-300 hover:text-white text-sm font-medium transition-colors duration-200"
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            <div className="hidden md:flex items-center gap-3">
-              <a href="#showcase" className="text-slate-300 hover:text-white text-sm font-medium transition-colors">
-                View demo
-              </a>
-              <a href="#contact" className="btn-primary text-white text-sm font-semibold px-5 py-2.5">
-                <span>Browse drops</span>
-                <ArrowUpRight size={16} />
-              </a>
-            </div>
-
-            <button
-              className="md:hidden text-slate-400 hover:text-white transition-colors"
-              onClick={() => setOpen((o) => !o)}
-            >
-              {open ? <X size={22} /> : <Menu size={22} />}
-            </button>
+            <PrimaryButton href="#contact" className="px-5 py-3">
+              Get it now
+              <ArrowUpRight size={16} />
+            </PrimaryButton>
           </div>
-        </Motion.nav>
+
+          <button
+            type="button"
+            onClick={() => setOpen((prev) => !prev)}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-slate-100 md:hidden"
+            aria-label="Toggle navigation"
+          >
+            {open ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </Motion.div>
 
         <AnimatePresence>
-          {open && (
+          {open ? (
             <Motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 0, y: -10, height: 0 }}
+              animate={{ opacity: 1, y: 0, height: 'auto' }}
+              exit={{ opacity: 0, y: -10, height: 0 }}
               transition={{ duration: 0.25 }}
-              className="surface border-x-0 rounded-none px-4 sm:px-6 lg:px-8 py-5 mt-0 w-full flex flex-col gap-4"
+              className="glass-card mt-3 overflow-hidden rounded-3xl px-4 py-4 md:hidden"
             >
-              {navLinks.map((l) => (
-                <a
-                  key={l.label}
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="text-slate-300 hover:text-white font-medium transition-colors"
-                >
-                  {l.label}
-                </a>
-              ))}
-              <a href="#contact" className="btn-primary text-white text-sm font-semibold px-5 py-2.5 text-center">
-                <span>Browse drops</span>
-                <ArrowUpRight size={16} />
-              </a>
+              <div className="flex flex-col gap-3">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="rounded-2xl border border-white/5 bg-white/5 px-4 py-3 text-sm font-medium text-slate-200 transition-colors hover:text-white"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+                <PrimaryButton href="#contact" className="justify-center">
+                  Get it now
+                  <ArrowUpRight size={16} />
+                </PrimaryButton>
+              </div>
             </Motion.div>
-          )}
+          ) : null}
         </AnimatePresence>
       </div>
     </header>
